@@ -1,0 +1,2 @@
+DEPENDENCIES = \
+$(EXE_SRC)/vtkTest.dep

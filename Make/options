@@ -1,0 +1,25 @@
+curvedEdges = ../blockMesh/curvedEdges
+
+
+EXE_INC = -I$(LIB_SRC)/foam/lnInclude          \
+          -I$(LIB_SRC)/finiteVolume/lnInclude  \
+   	  -I$(LIB_SRC)/meshTools/lnInclude     \
+  	  -I$(LIB_SRC)/dynamicMesh/lnInclude   \
+          -I$(curvedEdges)                     \
+          -I/opt/foam/OpenFOAM/ThirdParty/fox-1.6.34/include      \
+          -I/usr/X11R6/include                 \
+          -DHAVE_GL_H=1 -DHAVE_GLU_H=1 -DFULLDEBUG -g -O0
+
+EXE_LIBS =  \
+          -DHAVE_GL_H=1 -DHAVE_GLU_H=1         \
+          -L$(WM_PROJECT_USER_LIB)             \
+          -lfiniteVolume                       \
+	  -lmeshTools                          \
+          -ldynamicMesh                        \
+          -L/usr/local/lib                     \
+          -L/opt/foam/OpenFOAM/ThirdParty/fox-1.6.34/src          \
+          -L/usr/X11R6/lib                     \
+          -lFOX-1.6 -lpng -lXext -lX11 -lXcursor -ldl -lpthread \
+          -lz -lm -lGL -lGLU
+
+

@@ -1,0 +1,73 @@
+simpleViewer - a graphical blockMesh previewer
+=============================================
+
+1. Introduction.
+
+simpleViewer is a tool for viewing the block structure used by blockMesh
+to create OpenFOAM meshes. It is written using the Fox toolkit and
+OpenGL, and is basically a layer of code on top of blockMesh to do 
+the graphics. At startup it reads in the blockMeshDict (it will read in
+an incomplete blockMeshDict), displays the vertices (numbered) and edges 
+(including curved edges) in an OpenGL window, together with a set of 
+coordinate axes (in red - currently there is no scale on these, but they
+do intersect at the origin (0,0,0) of the coordinate system).
+The view can be zoomed (central button/wheel), translated (right button) 
+or rotated (left button), and switched between parallel and perspective 
+views (on the Actions menu). A second button will do a screendump to
+a file "snapshot.gif".
+
+2. Installation of Fox toolkit. 
+
+simpleViewer is written using fox-1.6.34; it may compile using later versions
+(I don't know). Download this from the Fox toolkit web site:
+
+www.fox-toolkit.org
+
+Unpack the toolkit somewhere convenient (I like to put it in /ThirdParty)
+./configure -prefix ~/OpenFOAM/ThirdParty/fox-1.6.34
+make
+make install
+
+3. Compiling simpleViewer
+
+Unpack the directory somewhere appropriate. The code is a
+standard OpenFOAM code with a subdirectory Make. Check the options file;
+EXE_INC should point to the /include subdirectory of your Fox installation,
+and EXE_LIBS should point to the /src subdirectory of the installation.
+Having done this, wmake it in the usual way.
+
+4. Using it.
+
+Same as always; type
+
+simpleViewer
+
+5. To do.
+
+This is a trial release, in the hope that some people might find it
+useful (and to get feedback on the code). It is useable (I think) as
+a way of looking at the blocks in a blockMeshDict. I'm hoping to 
+extend it though; some of the following would be good (and might be
+included in the future):
+
+- More options for customising the GUI, either before or during runtime.
+This could include; changing the size of the axes (removing completely
+or changing how it is displayed), changing the font size...
+
+- Redisplay button - when the mesh has been edited (outside the application)
+it can be reread without having to restart the code.
+
+- Full editing of the blocks. This is the ultimate aim; whether I get there
+depends on a lot of things (my time and percieved demand for this).
+Some of the structure to do this is already in place; everything is on
+linked lists now, so could be modified, extended or deleted as appropriate.
+
+
+6. Caveat emptor.
+
+I've written this code to fill a perceived need for a simple viewer
+for blockMesh files. It works for me. Your mileage may vary.
+
+Gavin Tabor
+Exeter
+2008
